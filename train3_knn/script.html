@@ -1,0 +1,121 @@
+<pre><font color="#4E9A06"><b>aman@coast</b></font>:<font color="#3465A4"><b>~/root/LIPs/train3_</b></font>$ root
+   ------------------------------------------------------------
+  | Welcome to ROOT 6.18/04                  https://root.cern |
+  |                               (c) 1995-2019, The ROOT Team |
+  | Built for linuxx8664gcc on May 17 2020, 13:25:00           |
+  | From tag , 11 September 2019                               |
+  | Try &apos;.help&apos;, &apos;.demo&apos;, &apos;.license&apos;, &apos;.credits&apos;, &apos;.quit&apos;/&apos;.q&apos; |
+   ------------------------------------------------------------
+
+root [0] <font color="#729FCF"><b>TFile</b></font> tmp(&quot;<font color="#729FCF"><b>tm</b></font>p.root&quot;
+<font color="#FF5FFF">CDMSlite_LIP.root</font>
+<font color="#FF5FFF">dataset/</font>
+<font color="#FF5FFF">knn_organise.root</font>
+<font color="#FF5FFF">preprocessing.cxx</font>
+<font color="#FF5FFF">tmp.root</font>
+<font color="#FF5FFF">train.cxx</font>
+root [0] <font color="#729FCF"><b>TFile</b></font> tmp(&quot;tmp.root&quot;);
+root [1] <font color="#729FCF"><b>TMVA</b></font>::TMVAGui<font color="#5FFF5F"><b>(</b></font>&quot;tmp.root&quot;<font color="#5FFF5F"><b>)</b></font>
+--- Launch TMVA GUI to view input file: tmp.root
+=== Note: inactive buttons indicate classifiers that were not trained, ===
+===       or functionalities that were not invoked during the training ===
+root [2] --- Opening root file tmp.root in read mode
+--- Found directory: Method_KNN
+--- Classifier: KNN
+--- ==================================================================================================
+--- Classifier   (  #signal, #backgr.)  Optimal-cut  S/sqrt(S+B)      NSig      NBkg   EffSig   EffBkg
+--- --------------------------------------------------------------------------------------------------
+---        KNN:  (     1000,     1000)       0.8131      30.6752  969.2664  29.14692   0.9693  0.02915
+--- --------------------------------------------------------------------------------------------------
+
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/mvaeffs_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/mvaeffs_KNN.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 604 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/rejBvsS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/rejBvsS.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 604 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/invBeffvsSeff.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/invBeffvsSeff.png has been created
+--- Found directory for method: KNN::KNN containing MVA_KNN_S/_B
+--- Mean and RMS (S): 0.974501, 0.0778072
+--- Mean and RMS (B): 0.152078, 0.250897
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/mva_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/mva_KNN.png has been created
+--- Found directory for method: KNN::KNN containing MVA_KNN_S/_B
+--- Mean and RMS (S): 0.974501, 0.0778072
+--- Mean and RMS (B): 0.152078, 0.250897
+--- Found comparison histograms for overtraining check
+--- Perform Kolmogorov-Smirnov tests
+--- Goodness of signal (background) consistency: 0 (0)
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/overtrain_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/overtrain_KNN.png has been created
+--- Found directory: Method_KNN
+--- Classifier: KNN
+Warning in &lt;TFile::Append&gt;: Replacing existing TH1: purS_KNN (Potential memory leak).
+Warning in &lt;TFile::Append&gt;: Replacing existing TH1: significance_KNN (Potential memory leak).
+Warning in &lt;TFile::Append&gt;: Replacing existing TH1: effpurS_KNN (Potential memory leak).
+--- ==================================================================================================
+--- Classifier   (  #signal, #backgr.)  Optimal-cut  S/sqrt(S+B)      NSig      NBkg   EffSig   EffBkg
+--- --------------------------------------------------------------------------------------------------
+---        KNN:  (     1000,     1000)       0.8131      30.6752  969.2664  29.14692   0.9693  0.02915
+--- --------------------------------------------------------------------------------------------------
+
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/mvaeffs_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/mvaeffs_KNN.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 604 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/rejBvsS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/rejBvsS.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 604 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/invBeffvsSeff.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/invBeffvsSeff.png has been created
+<font color="#4E9A06"><b>aman@coast</b></font>:<font color="#3465A4"><b>~/root/LIPs/train3_</b></font>$ 
+
+</pre>

@@ -1,0 +1,9 @@
+/1.Data/dataset2/CDMSlite_LIP.root
+/train3_knn/dataset/weights/lips_bdt_KNN.weights.xml
+/train3_knn/CDMSlite_LIP.root
+/train3_knn/tmp.root
+/train3_knn/knn_organise.root
+/train4_kNN/dataset/weights/lips_bdt_KNN.weights.xml
+/train2_kNN/dataset/weights/lips_bdt_KNN.weights.xml
+/application_on_tr3/dataset/weights/lips_bdt_KNN.weights.xml
+/application_on_tr3/CDMSlite_LIP.root

@@ -1,0 +1,556 @@
+<pre><font color="#4E9A06"><b>aman@coast</b></font>:<font color="#3465A4"><b>~/root/LIPs/train2_bdt_knn_pders</b></font>$ root train.cxx 
+   ------------------------------------------------------------
+  | Welcome to ROOT 6.18/04                  https://root.cern |
+  |                               (c) 1995-2019, The ROOT Team |
+  | Built for linuxx8664gcc on May 17 2020, 13:25:00           |
+  | From tag , 11 September 2019                               |
+  | Try &apos;.help&apos;, &apos;.demo&apos;, &apos;.license&apos;, &apos;.credits&apos;, &apos;.quit&apos;/&apos;.q&apos; |
+   ------------------------------------------------------------
+
+root [0] 
+Processing train.cxx...
+DataSetInfo              : [dataset] : Added class &quot;Signal&quot;
+                         : Add Tree train_signal of type Signal with 968432 events
+DataSetInfo              : [dataset] : Added class &quot;Background&quot;
+                         : Add Tree train_background of type Background with 1032654 events
+                         : Add Tree test_signal of type Signal with 241303 events
+                         : Add Tree test_background of type Background with 259006 events
+Factory                  : Booking method: <b>KNN</b>
+                         : 
+Factory                  : <b>Train all methods</b>
+DataSetFactory           : [dataset] : Number of events in input trees
+                         : 
+                         : 
+                         : Dataset[dataset] : Weight renormalisation mode: &quot;EqualNumEvents&quot;: renormalises all event classes ...
+                         : Dataset[dataset] :  such that the effective (weighted) number of events in each class is the same 
+                         : Dataset[dataset] :  (and equals the number of events (entries) given for class=0 )
+                         : Dataset[dataset] : ... i.e. such that Sum[i=1..N_j]{w_i} = N_classA, j=classA, classB, ...
+                         : Dataset[dataset] : ... (note that N_j is the sum of TRAINING events
+                         : Dataset[dataset] :  ..... Testing events are not renormalised nor included in the renormalisation factor!)
+                         : Number of training and testing events
+                         : ---------------------------------------------------------------------------
+                         : Signal     -- training events            : 968432
+                         : Signal     -- testing events             : 241303
+                         : Signal     -- training and testing events: 1209735
+                         : Background -- training events            : 1032654
+                         : Background -- testing events             : 259006
+                         : Background -- training and testing events: 1291660
+                         : 
+DataSetInfo              : Correlation matrix (Signal):
+                         : --------------------------------------------------------------------------------------------------------------------------------
+                         :            Edep1   Edep2   Edep3   Edep4   Edep5   Edep6   Edep7   Edep8   Edep9  Edep10  Edep11  Edep12  Edep13  Edep14  Edep15
+                         :   Edep1:  +1.000  +0.002  +0.001  -0.001  -0.002  -0.001  -0.000  -0.001  -0.001  -0.001  -0.001  -0.001  -0.001  -0.001  -0.002
+                         :   Edep2:  +0.002  +1.000  +0.003  -0.000  +0.016  +0.001  +0.004  -0.000  -0.001  -0.001  -0.000  -0.000  -0.000  -0.000  -0.001
+                         :   Edep3:  +0.001  +0.003  +1.000  -0.000  -0.001  -0.000  -0.000  -0.000  -0.000  -0.000  -0.000  -0.000  -0.000  +0.008  -0.001
+                         :   Edep4:  -0.001  -0.000  -0.000  +1.000  +0.003  +0.000  -0.000  -0.000  -0.001  -0.000  -0.000  -0.000  -0.000  -0.000  -0.001
+                         :   Edep5:  -0.002  +0.016  -0.001  +0.003  +1.000  +0.035  -0.001  -0.001  -0.001  -0.001  -0.001  -0.001  -0.001  -0.000  -0.001
+                         :   Edep6:  -0.001  +0.001  -0.000  +0.000  +0.035  +1.000  -0.001  -0.000  -0.001  -0.001  -0.000  -0.000  -0.000  +0.001  +0.145
+                         :   Edep7:  -0.000  +0.004  -0.000  -0.000  -0.001  -0.001  +1.000  +0.118  +0.000  -0.000  -0.000  -0.000  -0.000  -0.000  -0.001
+                         :   Edep8:  -0.001  -0.000  -0.000  -0.000  -0.001  -0.000  +0.118  +1.000  +0.115  -0.000  -0.000  -0.000  -0.000  +0.001  -0.001
+                         :   Edep9:  -0.001  -0.001  -0.000  -0.001  -0.001  -0.001  +0.000  +0.115  +1.000  -0.001  -0.001  -0.000  -0.001  -0.001  -0.001
+                         :  Edep10:  -0.001  -0.001  -0.000  -0.000  -0.001  -0.001  -0.000  -0.000  -0.001  +1.000  +0.135  +0.002  -0.000  -0.000  +0.000
+                         :  Edep11:  -0.001  -0.000  -0.000  -0.000  -0.001  -0.000  -0.000  -0.000  -0.001  +0.135  +1.000  +0.054  -0.000  +0.003  +0.001
+                         :  Edep12:  -0.001  -0.000  -0.000  -0.000  -0.001  -0.000  -0.000  -0.000  -0.000  +0.002  +0.054  +1.000  -0.000  +0.003  +0.016
+                         :  Edep13:  -0.001  -0.000  -0.000  -0.000  -0.001  -0.000  -0.000  -0.000  -0.001  -0.000  -0.000  -0.000  +1.000  +0.020  +0.000
+                         :  Edep14:  -0.001  -0.000  +0.008  -0.000  -0.000  +0.001  -0.000  +0.001  -0.001  -0.000  +0.003  +0.003  +0.020  +1.000  +0.012
+                         :  Edep15:  -0.002  -0.001  -0.001  -0.001  -0.001  +0.145  -0.001  -0.001  -0.001  +0.000  +0.001  +0.016  +0.000  +0.012  +1.000
+                         : --------------------------------------------------------------------------------------------------------------------------------
+DataSetInfo              : Correlation matrix (Background):
+                         : --------------------------------------------------------------------------------------------------------------------------------
+                         :            Edep1   Edep2   Edep3   Edep4   Edep5   Edep6   Edep7   Edep8   Edep9  Edep10  Edep11  Edep12  Edep13  Edep14  Edep15
+                         :   Edep1:  +1.000  +0.396  +0.158  -0.010  -0.042  -0.040  -0.015  -0.042  -0.039  -0.015  -0.039  -0.038  -0.050  -0.060  -0.069
+                         :   Edep2:  +0.396  +1.000  +0.351  -0.043  -0.006  -0.039  -0.044  -0.007  -0.039  -0.044  -0.005  -0.034  -0.060  -0.050  -0.059
+                         :   Edep3:  +0.158  +0.351  +1.000  -0.039  -0.038  -0.004  -0.041  -0.039  -0.008  -0.038  -0.041  -0.005  -0.069  -0.060  -0.054
+                         :   Edep4:  -0.010  -0.043  -0.039  +1.000  +0.396  +0.158  -0.048  -0.062  -0.069  -0.012  -0.040  -0.039  -0.013  -0.041  -0.040
+                         :   Edep5:  -0.042  -0.006  -0.038  +0.396  +1.000  +0.352  -0.062  -0.050  -0.059  -0.044  -0.005  -0.035  -0.043  -0.004  -0.039
+                         :   Edep6:  -0.040  -0.039  -0.004  +0.158  +0.352  +1.000  -0.068  -0.059  -0.055  -0.039  -0.043  -0.004  -0.039  -0.039  -0.007
+                         :   Edep7:  -0.015  -0.044  -0.041  -0.048  -0.062  -0.068  +1.000  +0.395  +0.159  -0.013  -0.039  -0.037  -0.056  -0.063  -0.071
+                         :   Edep8:  -0.042  -0.007  -0.039  -0.062  -0.050  -0.059  +0.395  +1.000  +0.351  -0.044  -0.005  -0.034  -0.062  -0.058  -0.062
+                         :   Edep9:  -0.039  -0.039  -0.008  -0.069  -0.059  -0.055  +0.159  +0.351  +1.000  -0.037  -0.042  -0.005  -0.070  -0.062  -0.061
+                         :  Edep10:  -0.015  -0.044  -0.038  -0.012  -0.044  -0.039  -0.013  -0.044  -0.037  +1.000  +0.397  +0.159  -0.013  -0.043  -0.040
+                         :  Edep11:  -0.039  -0.005  -0.041  -0.040  -0.005  -0.043  -0.039  -0.005  -0.042  +0.397  +1.000  +0.352  -0.040  -0.004  -0.043
+                         :  Edep12:  -0.038  -0.034  -0.005  -0.039  -0.035  -0.004  -0.037  -0.034  -0.005  +0.159  +0.352  +1.000  -0.038  -0.034  -0.004
+                         :  Edep13:  -0.050  -0.060  -0.069  -0.013  -0.043  -0.039  -0.056  -0.062  -0.070  -0.013  -0.040  -0.038  +1.000  +0.394  +0.158
+                         :  Edep14:  -0.060  -0.050  -0.060  -0.041  -0.004  -0.039  -0.063  -0.058  -0.062  -0.043  -0.004  -0.034  +0.394  +1.000  +0.351
+                         :  Edep15:  -0.069  -0.059  -0.054  -0.040  -0.039  -0.007  -0.071  -0.062  -0.061  -0.040  -0.043  -0.004  +0.158  +0.351  +1.000
+                         : --------------------------------------------------------------------------------------------------------------------------------
+DataSetFactory           : [dataset] :  
+                         : 
+Factory                  : [dataset] : Create Transformation &quot;I&quot; with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable &apos;Edep1&apos; &lt;---&gt; Output : variable &apos;Edep1&apos;
+                         : Input : variable &apos;Edep2&apos; &lt;---&gt; Output : variable &apos;Edep2&apos;
+                         : Input : variable &apos;Edep3&apos; &lt;---&gt; Output : variable &apos;Edep3&apos;
+                         : Input : variable &apos;Edep4&apos; &lt;---&gt; Output : variable &apos;Edep4&apos;
+                         : Input : variable &apos;Edep5&apos; &lt;---&gt; Output : variable &apos;Edep5&apos;
+                         : Input : variable &apos;Edep6&apos; &lt;---&gt; Output : variable &apos;Edep6&apos;
+                         : Input : variable &apos;Edep7&apos; &lt;---&gt; Output : variable &apos;Edep7&apos;
+                         : Input : variable &apos;Edep8&apos; &lt;---&gt; Output : variable &apos;Edep8&apos;
+                         : Input : variable &apos;Edep9&apos; &lt;---&gt; Output : variable &apos;Edep9&apos;
+                         : Input : variable &apos;Edep10&apos; &lt;---&gt; Output : variable &apos;Edep10&apos;
+                         : Input : variable &apos;Edep11&apos; &lt;---&gt; Output : variable &apos;Edep11&apos;
+                         : Input : variable &apos;Edep12&apos; &lt;---&gt; Output : variable &apos;Edep12&apos;
+                         : Input : variable &apos;Edep13&apos; &lt;---&gt; Output : variable &apos;Edep13&apos;
+                         : Input : variable &apos;Edep14&apos; &lt;---&gt; Output : variable &apos;Edep14&apos;
+                         : Input : variable &apos;Edep15&apos; &lt;---&gt; Output : variable &apos;Edep15&apos;
+Factory                  : [dataset] : Create Transformation &quot;D&quot; with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable &apos;Edep1&apos; &lt;---&gt; Output : variable &apos;Edep1&apos;
+                         : Input : variable &apos;Edep2&apos; &lt;---&gt; Output : variable &apos;Edep2&apos;
+                         : Input : variable &apos;Edep3&apos; &lt;---&gt; Output : variable &apos;Edep3&apos;
+                         : Input : variable &apos;Edep4&apos; &lt;---&gt; Output : variable &apos;Edep4&apos;
+                         : Input : variable &apos;Edep5&apos; &lt;---&gt; Output : variable &apos;Edep5&apos;
+                         : Input : variable &apos;Edep6&apos; &lt;---&gt; Output : variable &apos;Edep6&apos;
+                         : Input : variable &apos;Edep7&apos; &lt;---&gt; Output : variable &apos;Edep7&apos;
+                         : Input : variable &apos;Edep8&apos; &lt;---&gt; Output : variable &apos;Edep8&apos;
+                         : Input : variable &apos;Edep9&apos; &lt;---&gt; Output : variable &apos;Edep9&apos;
+                         : Input : variable &apos;Edep10&apos; &lt;---&gt; Output : variable &apos;Edep10&apos;
+                         : Input : variable &apos;Edep11&apos; &lt;---&gt; Output : variable &apos;Edep11&apos;
+                         : Input : variable &apos;Edep12&apos; &lt;---&gt; Output : variable &apos;Edep12&apos;
+                         : Input : variable &apos;Edep13&apos; &lt;---&gt; Output : variable &apos;Edep13&apos;
+                         : Input : variable &apos;Edep14&apos; &lt;---&gt; Output : variable &apos;Edep14&apos;
+                         : Input : variable &apos;Edep15&apos; &lt;---&gt; Output : variable &apos;Edep15&apos;
+Factory                  : [dataset] : Create Transformation &quot;P&quot; with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable &apos;Edep1&apos; &lt;---&gt; Output : variable &apos;Edep1&apos;
+                         : Input : variable &apos;Edep2&apos; &lt;---&gt; Output : variable &apos;Edep2&apos;
+                         : Input : variable &apos;Edep3&apos; &lt;---&gt; Output : variable &apos;Edep3&apos;
+                         : Input : variable &apos;Edep4&apos; &lt;---&gt; Output : variable &apos;Edep4&apos;
+                         : Input : variable &apos;Edep5&apos; &lt;---&gt; Output : variable &apos;Edep5&apos;
+                         : Input : variable &apos;Edep6&apos; &lt;---&gt; Output : variable &apos;Edep6&apos;
+                         : Input : variable &apos;Edep7&apos; &lt;---&gt; Output : variable &apos;Edep7&apos;
+                         : Input : variable &apos;Edep8&apos; &lt;---&gt; Output : variable &apos;Edep8&apos;
+                         : Input : variable &apos;Edep9&apos; &lt;---&gt; Output : variable &apos;Edep9&apos;
+                         : Input : variable &apos;Edep10&apos; &lt;---&gt; Output : variable &apos;Edep10&apos;
+                         : Input : variable &apos;Edep11&apos; &lt;---&gt; Output : variable &apos;Edep11&apos;
+                         : Input : variable &apos;Edep12&apos; &lt;---&gt; Output : variable &apos;Edep12&apos;
+                         : Input : variable &apos;Edep13&apos; &lt;---&gt; Output : variable &apos;Edep13&apos;
+                         : Input : variable &apos;Edep14&apos; &lt;---&gt; Output : variable &apos;Edep14&apos;
+                         : Input : variable &apos;Edep15&apos; &lt;---&gt; Output : variable &apos;Edep15&apos;
+Factory                  : [dataset] : Create Transformation &quot;G&quot; with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable &apos;Edep1&apos; &lt;---&gt; Output : variable &apos;Edep1&apos;
+                         : Input : variable &apos;Edep2&apos; &lt;---&gt; Output : variable &apos;Edep2&apos;
+                         : Input : variable &apos;Edep3&apos; &lt;---&gt; Output : variable &apos;Edep3&apos;
+                         : Input : variable &apos;Edep4&apos; &lt;---&gt; Output : variable &apos;Edep4&apos;
+                         : Input : variable &apos;Edep5&apos; &lt;---&gt; Output : variable &apos;Edep5&apos;
+                         : Input : variable &apos;Edep6&apos; &lt;---&gt; Output : variable &apos;Edep6&apos;
+                         : Input : variable &apos;Edep7&apos; &lt;---&gt; Output : variable &apos;Edep7&apos;
+                         : Input : variable &apos;Edep8&apos; &lt;---&gt; Output : variable &apos;Edep8&apos;
+                         : Input : variable &apos;Edep9&apos; &lt;---&gt; Output : variable &apos;Edep9&apos;
+                         : Input : variable &apos;Edep10&apos; &lt;---&gt; Output : variable &apos;Edep10&apos;
+                         : Input : variable &apos;Edep11&apos; &lt;---&gt; Output : variable &apos;Edep11&apos;
+                         : Input : variable &apos;Edep12&apos; &lt;---&gt; Output : variable &apos;Edep12&apos;
+                         : Input : variable &apos;Edep13&apos; &lt;---&gt; Output : variable &apos;Edep13&apos;
+                         : Input : variable &apos;Edep14&apos; &lt;---&gt; Output : variable &apos;Edep14&apos;
+                         : Input : variable &apos;Edep15&apos; &lt;---&gt; Output : variable &apos;Edep15&apos;
+Factory                  : [dataset] : Create Transformation &quot;D&quot; with events from all classes.
+                         : 
+                         : Transformation, Variable selection : 
+                         : Input : variable &apos;Edep1&apos; &lt;---&gt; Output : variable &apos;Edep1&apos;
+                         : Input : variable &apos;Edep2&apos; &lt;---&gt; Output : variable &apos;Edep2&apos;
+                         : Input : variable &apos;Edep3&apos; &lt;---&gt; Output : variable &apos;Edep3&apos;
+                         : Input : variable &apos;Edep4&apos; &lt;---&gt; Output : variable &apos;Edep4&apos;
+                         : Input : variable &apos;Edep5&apos; &lt;---&gt; Output : variable &apos;Edep5&apos;
+                         : Input : variable &apos;Edep6&apos; &lt;---&gt; Output : variable &apos;Edep6&apos;
+                         : Input : variable &apos;Edep7&apos; &lt;---&gt; Output : variable &apos;Edep7&apos;
+                         : Input : variable &apos;Edep8&apos; &lt;---&gt; Output : variable &apos;Edep8&apos;
+                         : Input : variable &apos;Edep9&apos; &lt;---&gt; Output : variable &apos;Edep9&apos;
+                         : Input : variable &apos;Edep10&apos; &lt;---&gt; Output : variable &apos;Edep10&apos;
+                         : Input : variable &apos;Edep11&apos; &lt;---&gt; Output : variable &apos;Edep11&apos;
+                         : Input : variable &apos;Edep12&apos; &lt;---&gt; Output : variable &apos;Edep12&apos;
+                         : Input : variable &apos;Edep13&apos; &lt;---&gt; Output : variable &apos;Edep13&apos;
+                         : Input : variable &apos;Edep14&apos; &lt;---&gt; Output : variable &apos;Edep14&apos;
+                         : Input : variable &apos;Edep15&apos; &lt;---&gt; Output : variable &apos;Edep15&apos;
+TFHandler_Factory        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :    Edep1:    0.84017     4.4883   [     0.0000     72.643 ]
+                         :    Edep2:    0.91328     4.8110   [     0.0000     74.175 ]
+                         :    Edep3:    0.97873     5.0617   [     0.0000     73.400 ]
+                         :    Edep4:    0.84728     4.5205   [     0.0000     76.428 ]
+                         :    Edep5:    0.91184     4.8006   [     0.0000     76.768 ]
+                         :    Edep6:    0.96871     5.0254   [     0.0000     77.795 ]
+                         :    Edep7:    0.84416     4.4997   [     0.0000     83.848 ]
+                         :    Edep8:    0.91521     4.8231   [     0.0000     74.116 ]
+                         :    Edep9:    0.97337     5.0395   [     0.0000     72.632 ]
+                         :   Edep10:    0.83411     4.4684   [     0.0000     72.278 ]
+                         :   Edep11:    0.90563     4.7918   [     0.0000     79.236 ]
+                         :   Edep12:    0.96901     5.0378   [     0.0000     75.497 ]
+                         :   Edep13:    0.84718     4.5247   [     0.0000     73.182 ]
+                         :   Edep14:    0.92024     4.8351   [     0.0000     74.882 ]
+                         :   Edep15:    0.97732     5.0479   [     0.0000     77.417 ]
+                         : -----------------------------------------------------------
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :    Edep1:    0.15040     1.0000   [    -3.6944     17.282 ]
+                         :    Edep2:    0.13476     1.0000   [    -3.5438     17.460 ]
+                         :    Edep3:    0.15927     1.0000   [    -3.0906     15.402 ]
+                         :    Edep4:    0.15069     1.0000   [    -3.6361     18.217 ]
+                         :    Edep5:    0.13472     1.0000   [    -3.6556     17.883 ]
+                         :    Edep6:    0.15842     1.0000   [    -3.0157     16.451 ]
+                         :    Edep7:    0.15576     1.0000   [    -3.7277     20.122 ]
+                         :    Edep8:    0.13740     1.0000   [    -4.0088     17.457 ]
+                         :    Edep9:    0.16481     1.0000   [    -3.0038     15.303 ]
+                         :   Edep10:    0.14621     1.0000   [    -3.8778     17.378 ]
+                         :   Edep11:    0.13221     1.0000   [    -3.6248     18.656 ]
+                         :   Edep12:    0.15078     1.0000   [    -3.1780     15.884 ]
+                         :   Edep13:    0.15548     1.0000   [    -3.6007     17.403 ]
+                         :   Edep14:    0.13756     1.0000   [    -3.5247     17.483 ]
+                         :   Edep15:    0.16530     1.0000   [    -2.9835     16.288 ]
+                         : -----------------------------------------------------------
+                         : Preparing the Principle Component (PCA) transformation...
+TFHandler_Factory        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :    Edep1:-0.00090246     6.4196   [    -39.756     40.698 ]
+                         :    Edep2:   0.067653     6.2830   [    -48.645     12.247 ]
+                         :    Edep3:   0.062823     6.1997   [    -59.270     14.154 ]
+                         :    Edep4: -0.0016323     6.0506   [    -36.707     38.698 ]
+                         :    Edep5:  -0.063893     5.9960   [    -24.027     39.044 ]
+                         :    Edep6:  0.0058648     4.5841   [    -48.070     59.348 ]
+                         :    Edep7:-0.00020170     4.3267   [    -49.833     49.327 ]
+                         :    Edep8: 0.00053748     4.2756   [    -47.694     54.475 ]
+                         :    Edep9: 0.00045335     4.2337   [    -48.161     41.249 ]
+                         :   Edep10: -0.0010577     4.2232   [    -43.882     39.302 ]
+                         :   Edep11:  -0.013019     3.7297   [    -53.596     49.285 ]
+                         :   Edep12:-0.00018689     3.4797   [    -55.308     52.599 ]
+                         :   Edep13: -0.0013017     3.3679   [    -50.707     48.059 ]
+                         :   Edep14:-0.00072520     3.2732   [    -48.632     47.378 ]
+                         :   Edep15:  0.0019582     3.2648   [    -53.397     50.790 ]
+                         : -----------------------------------------------------------
+                         : Preparing the Gaussian transformation...
+                         : Preparing the Decorrelation transformation...
+TFHandler_Factory        : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :    Edep1:   -0.97877     1.0000   [    -6.6487     20.872 ]
+                         :    Edep2:   -0.76304     1.0000   [    -6.5219     21.900 ]
+                         :    Edep3:   -0.87394     1.0000   [    -6.0816     20.112 ]
+                         :    Edep4:   -0.94557     1.0000   [    -6.6034     21.094 ]
+                         :    Edep5:   -0.77214     1.0000   [    -6.4536     21.956 ]
+                         :    Edep6:   -0.81166     1.0000   [    -6.0153     20.423 ]
+                         :    Edep7:   -0.82759     1.0000   [    -6.5300     21.774 ]
+                         :    Edep8:   -0.83930     1.0000   [    -6.3966     21.731 ]
+                         :    Edep9:   -0.92357     1.0000   [    -6.1837     20.323 ]
+                         :   Edep10:    -1.0560     1.0000   [    -6.9005     20.900 ]
+                         :   Edep11:   -0.68605     1.0000   [    -6.6642     22.779 ]
+                         :   Edep12:   -0.83667     1.0000   [    -6.1499     20.352 ]
+                         :   Edep13:    -1.0625     1.0000   [    -6.7904     20.698 ]
+                         :   Edep14:    -1.1501     1.0000   [    -6.9718     21.680 ]
+                         :   Edep15:    0.74884     1.0000   [    -4.8215     24.612 ]
+                         : -----------------------------------------------------------
+                         : Ranking input variables (method unspecific)...
+IdTransformation         : Ranking result (top variable is best ranked)
+                         : -------------------------------
+                         : Rank : Variable  : Separation
+                         : -------------------------------
+                         :    1 : Edep15    : 5.530e-02
+                         :    2 : Edep9     : 5.491e-02
+                         :    3 : Edep3     : 5.464e-02
+                         :    4 : Edep6     : 5.446e-02
+                         :    5 : Edep7     : 5.416e-02
+                         :    6 : Edep13    : 5.405e-02
+                         :    7 : Edep14    : 5.405e-02
+                         :    8 : Edep4     : 5.400e-02
+                         :    9 : Edep5     : 5.389e-02
+                         :   10 : Edep1     : 5.387e-02
+                         :   11 : Edep8     : 5.387e-02
+                         :   12 : Edep12    : 5.371e-02
+                         :   13 : Edep2     : 5.367e-02
+                         :   14 : Edep10    : 5.355e-02
+                         :   15 : Edep11    : 5.312e-02
+                         : -------------------------------
+Factory                  : Train method: KNN for Classification
+                         : 
+KNN                      : &lt;Train&gt; start...
+                         : Reading 2001086 events
+                         : Number of signal events 968432
+                         : Number of background events 968432
+                         : Creating kd-tree with 2001086 events
+                         : Computing scale factor for 1d distributions: (ifrac, bottom, top) = (80%, 10%, 90%)
+ModulekNN                : Optimizing tree for 15 variables with 2001086 values
+                         : &lt;Fill&gt; Class 1 has   968432 events
+                         : &lt;Fill&gt; Class 2 has  1032654 events
+                         : Elapsed time for training with 2001086 events: <font color="#CC0000"><b>43.1 sec</b></font>         
+KNN                      : [dataset] : Evaluation of KNN on training sample (2001086 events)
+                         : Elapsed time for evaluation of 2001086 events: <font color="#CC0000"><b>860 sec</b></font>       
+                         : Creating xml weight file: <font color="#06989A">dataset/weights/lips_bdt_KNN.weights.xml</font>
+                         : Creating standalone class: <font color="#06989A">dataset/weights/lips_bdt_KNN.class.C</font>
+Factory                  : Training finished
+                         : 
+                         : Ranking input variables (method specific)...
+                         : No variable ranking supplied by classifier: KNN
+Factory                  : === Destroy and recreate all methods via weight files for testing ===
+                         : 
+                         : Reading weight file: <font color="#06989A">dataset/weights/lips_bdt_KNN.weights.xml</font>
+                         : Creating kd-tree with 2001086 events
+                         : Computing scale factor for 1d distributions: (ifrac, bottom, top) = (80%, 10%, 90%)
+ModulekNN                : Optimizing tree for 15 variables with 2001086 values
+                         : &lt;Fill&gt; Class 1 has   968432 events
+                         : &lt;Fill&gt; Class 2 has  1032654 events
+Factory                  : <b>Test all methods</b>
+Factory                  : Test method: KNN for Classification performance
+                         : 
+KNN                      : [dataset] : Evaluation of KNN on testing sample (500309 events)
+                         : Elapsed time for evaluation of 500309 events: <font color="#CC0000"><b>216 sec</b></font>       
+Factory                  : <b>Evaluate all methods</b>
+Factory                  : Evaluate classifier: KNN
+                         : 
+KNN                      : [dataset] : Loop over test events and fill histograms with classifier response...
+                         : 
+TFHandler_KNN            : Variable        Mean        RMS   [        Min        Max ]
+                         : -----------------------------------------------------------
+                         :    Edep1:    0.87614     4.5932   [     0.0000     68.339 ]
+                         :    Edep2:    0.95363     4.9132   [     0.0000     73.065 ]
+                         :    Edep3:     1.0145     5.1302   [     0.0000     73.395 ]
+                         :    Edep4:    0.87552     4.5853   [     0.0000     70.836 ]
+                         :    Edep5:    0.95886     4.9347   [     0.0000     70.828 ]
+                         :    Edep6:     1.0113     5.1517   [     0.0000     72.093 ]
+                         :    Edep7:    0.87932     4.5988   [     0.0000     71.228 ]
+                         :    Edep8:    0.95072     4.9083   [     0.0000     74.360 ]
+                         :    Edep9:     1.0042     5.1123   [     0.0000     67.176 ]
+                         :   Edep10:    0.86630     4.5523   [     0.0000     71.709 ]
+                         :   Edep11:    0.94209     4.8952   [     0.0000     78.645 ]
+                         :   Edep12:    0.99091     5.0699   [     0.0000     71.344 ]
+                         :   Edep13:    0.86436     4.5579   [     0.0000     80.160 ]
+                         :   Edep14:    0.94419     4.9015   [     0.0000     76.802 ]
+                         :   Edep15:     1.0033     5.1042   [     0.0000     75.889 ]
+                         : -----------------------------------------------------------
+                         : 
+                         : Evaluation results ranked by best signal efficiency and purity (area)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet       MVA                       
+                         : Name:         Method:          ROC-integ
+                         : dataset       KNN            : 0.999
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+                         : Testing efficiency compared to training efficiency (overtraining check)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : DataSet              MVA              Signal efficiency: from test sample (from training sample) 
+                         : Name:                Method:          @B=0.01             @B=0.10            @B=0.30   
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : dataset              KNN            : 1.000 (1.000)       1.000 (1.000)      1.000 (1.000)
+                         : -------------------------------------------------------------------------------------------------------------------
+                         : 
+Dataset:dataset          : Created tree &apos;TestTree&apos; with 500309 events
+                         : 
+Dataset:dataset          : Created tree &apos;TrainTree&apos; with 2001086 events
+                         : 
+Factory                  : <b>Thank you for using TMVA!</b>
+                         : <b>For citation information, please visit: http://tmva.sf.net/citeTMVA.html</b>
+--- Launch TMVA GUI to view input file: tmp.root
+=== Note: inactive buttons indicate classifiers that were not trained, ===
+===       or functionalities that were not invoked during the training ===
+root [1] --- Opening root file tmp.root in read mode
+--- Found directory for method: KNN::KNN containing MVA_KNN_S/_B
+--- Mean and RMS (S): 0.992006, 0.0665014
+--- Mean and RMS (B): 0.00536474, 0.0514516
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/mva_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/mva_KNN.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 603 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/rejBvsS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/rejBvsS.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/CorrelationMatrixS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/CorrelationMatrixS.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/CorrelationMatrixB.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/CorrelationMatrixB.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/variables_id_c1.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/variables_id_c1.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/variables_id_c2.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/variables_id_c2.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/variables_id_c3.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/variables_id_c3.png has been created
+--- Open CorrGui for input file: tmp.root and type: InputVariables_Id
+tmp.root:/
+found number of variables=&apos;15
+found histos for 15 variables=&apos;
+Called macro &quot;correlationscatters&quot; for variable: &quot;Edep1&quot;, transformation type &quot;InputVariables_Id&quot; (extension: &quot;_Id&quot;)
+noPlots: 14 --&gt; noVars: 15
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c1.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c1.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c2.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c2.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c3.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c3.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c4.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c4.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c5.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c5.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep1__Id_c6.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep1__Id_c6.png has been created
+Called macro &quot;correlationscatters&quot; for variable: &quot;Edep14&quot;, transformation type &quot;InputVariables_Id&quot; (extension: &quot;_Id&quot;)
+noPlots: 14 --&gt; noVars: 15
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c1.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c1.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c2.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c2.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c3.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c3.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c4.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c4.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c5.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c5.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/correlationscatter_Edep14__Id_c6.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/correlationscatter_Edep14__Id_c6.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 603 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/invBeffvsSeff.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/invBeffvsSeff.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/CorrelationMatrixS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/CorrelationMatrixS.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/CorrelationMatrixB.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/CorrelationMatrixB.png has been created
+--- Found directory for method: KNN::KNN containing MVA_KNN_S/_B
+--- Mean and RMS (S): 0.992006, 0.0665014
+--- Mean and RMS (B): 0.00536474, 0.0514516
+--- Found comparison histograms for overtraining check
+--- Perform Kolmogorov-Smirnov tests
+--- Goodness of signal (background) consistency: 0 (0)
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/overtrain_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/overtrain_KNN.png has been created
+--- Found directory for method: KNN::KNN:	 probability distribution not available
+--- Found directory for method: KNN::KNN:	 rarity distribution not available
+--- Found directory: Method_KNN
+--- Classifier: KNN
+--- ==================================================================================================
+--- Classifier   (  #signal, #backgr.)  Optimal-cut  S/sqrt(S+B)      NSig      NBkg   EffSig   EffBkg
+--- --------------------------------------------------------------------------------------------------
+---        KNN:  (     1000,     1000)       0.3649      31.4855  995.5699  4.250867   0.9956 0.004251
+--- --------------------------------------------------------------------------------------------------
+
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/mvaeffs_KNN.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/mvaeffs_KNN.png has been created
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- Found 1 classifier types
+--- Found 1 instance(s) of the method Method_KNN
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Warning in &lt;TColor::TColor&gt;: color 604 already defined
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/rejBvsS.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/rejBvsS.png has been created
+--- Found: 15 variables
+--- Found: 1 MVA(s)
+--- Plotting parallel coordinates for : KNN &amp; input variables
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/paracoor_c0_S.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/paracoor_c0_S.png has been created
+--- --------------------------------------------------------------------
+--- If you want to save the image as eps, gif or png, please comment out 
+--- the corresponding lines (line no. 239-241) in tmvaglob.C
+--- --------------------------------------------------------------------
+Info in &lt;TCanvas::Print&gt;: eps file dataset/plots/paracoor_c0_B.eps has been created
+Info in &lt;TCanvas::Print&gt;: file dataset/plots/paracoor_c0_B.png has been created
+
+</pre>
