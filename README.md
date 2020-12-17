@@ -47,6 +47,6 @@ Label | particle
 100 | FCP with charge 1/100
 1000 | FCP with charge 1/1000
 
-     - Second is the predicted label and the third is the true label 
+  - Second is the predicted label and the third is the true label 
   
 **Thank You**
