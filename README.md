@@ -17,7 +17,7 @@ Feel free to drop in issues.
 
 
 ### Usage
-Download the complete repository on your system, some data files are missing here because of the GitHub file size limitations. Please find the files ([here](https://drive.google.com/drive/folders/1Ct1OufrJWz0Fs2-kToG3khRpST4_-32S?usp=sharing)).
+Download the complete repository on your system, some data files are missing here because of the GitHub file size limitations. Please find the files [here](https://drive.google.com/drive/folders/1Ct1OufrJWz0Fs2-kToG3khRpST4_-32S?usp=sharing).
 
 #### Folders
 - 1.Data
