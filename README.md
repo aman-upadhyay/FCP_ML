@@ -35,8 +35,8 @@ Download the complete repository on your system, some data files are missing her
   - app.cxx for application of the trained model.
   - weights of the model stored in dataset/weight
   - app_to_csv.cxx to save the sample data in csv format for getting a feel of the model without installing root.
-  - predicted_dataset.csv this file contains 3 columns. First is a PID label, the legend is: 
-  
+  - predicted_dataset.csv this file contains 3 columns. First is a PID label, the legend is tabulated below.
+  - Second is the predicted label and the third is the true label.
 Label | particle
 --- | --- 
 22 | Gamma
@@ -47,6 +47,5 @@ Label | particle
 100 | FCP with charge 1/100
 1000 | FCP with charge 1/1000
 
-  - Second is the predicted label and the third is the true label 
   
 **Thank You**
