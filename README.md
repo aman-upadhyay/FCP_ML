@@ -26,7 +26,7 @@ Download the complete repository on your system, some data files are missing her
     Each of these folders contains 
   - train.cxx file which is used for training the model. 
   - a data file named in the format "CDMSlite_LIP.root".
-  - a preprocessing.cxx file which takes in the CDMSlite_LIP.root file and creates the feature vector and saves it in XXX_organise.root file. One can use TBrouwser to check out the file.
+  - a preprocessing.cxx file which takes in the CDMSlite_LIP.root file and creates the feature vector and saves it in XXX_organise.root file. One can use TBrowser to check out the file.
   - plot.cxx that generates the input variable histogram plot saved as c1.png
   - weights stored in dataset/weight
 - application_on_trX 
