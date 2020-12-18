@@ -42,11 +42,10 @@ Label | particle
 --- | --- 
 22 | Gamma
 -13 | Muon
-2| FCP with charge 1/2
+2| FCP with charge 1/2 
 5 | FCP with charge 1/5
 10 | FCP with charge 1/10
 100 | FCP with charge 1/100
 1000 | FCP with charge 1/1000
 
   
-**Thank You**
